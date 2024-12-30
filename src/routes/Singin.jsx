@@ -6,7 +6,7 @@ const Singin = () => {
         <div>
             <form className="form-singin">
                 <div className="singin-box">
-                    <div>
+                    <div className='form-title'>
                         <h1>Login</h1>
                     </div>
                     <div className="email-form">
