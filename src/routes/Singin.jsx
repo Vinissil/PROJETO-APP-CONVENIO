@@ -1,4 +1,5 @@
 import '../sass/styleSingin.scss'
+import logoconvenio from '../assets/GOODCAREVERDE.png'
 
 const Singin = () => {
     return (
@@ -6,6 +7,7 @@ const Singin = () => {
         <div>
             <form className="form-singin">
                 <div className="singin-box">
+                <img className='greenbrand' src={logoconvenio} alt="" />
                     <div className='form-title'>
                         <h1>Login</h1>
                     </div>
