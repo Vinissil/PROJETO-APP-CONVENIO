@@ -1,9 +1,28 @@
 import '../sass/styleSingin.scss'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import logoconvenio from '../assets/GOODCAREVERDE.png'
 
 const Singin = () => {
+        const [email, setEmail] = useState('');
+        const [psw, setPsw] = useState('');
+        const navigate = useNavigate();
+    
+        const handleLogin = () => {
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.email === email && u.psw === psw)
+    
+            if (user) {
+                localStorage.setItem('loggedInUser', JSON.stringify(user));
+                navigate('/Singin')
+            } else {
+                alert("Credenciais inválidas. Tente novamente!")
+            }
+        };
+
     return (
         <>
+        <body>
         <div>
             <form className="form-singin">
                 <div className="singin-box">
@@ -12,20 +31,24 @@ const Singin = () => {
                         <h1>Login</h1>
                     </div>
                     <div className="email-form">
-                        <input type="email" name="email" id="" placeholder="Digite seu email aqui" />
+                        <label htmlFor="email">Email:</label>
+                        <input type="email" name="email" id="" placeholder="Digite seu usuário:" onChange={(e) => setEmail(e.target.value)}/>
                     </div>
                     <div className="password-form">
-                        <input type="password" name="password" id="" placeholder="Digite aqui sua senha" />
+                        <label className='title-user-singin' htmlFor="password">Senha:</label>
+                        <input type="password" name="password" id="" placeholder="Digite sua senha" onChange={(e) => setPsw(e.target.value)}/>
                     </div>
                     <div className="button-form">
-                        <button type="submit">Entrar</button>
+                        <button onClick={handleLogin} type="submit">Entrar</button>
                     </div>
-                    <div className="singup-button">
-                        <p>Não tem cadastro? <input type="button" value="Clique aqui" placeholder=""/></p>
+                    <div className="singup-button-register">
+                        <p>Não tem cadastro? <a href="/Singup"><br /><input type="button"
+                        className='singin-button-register' value="Clique aqui" placeholder=""/></a></p>
                     </div>
                 </div>
             </form>
         </div>
+        </body>
         </>
     )
 }

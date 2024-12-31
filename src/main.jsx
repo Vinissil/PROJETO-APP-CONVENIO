@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './routes/Home'
 import Singin from './routes/Singin'
 import Singup from './routes/Singup'
+import LoginPage from './routes/LoginPage'
 import App from './App'
 import Error from './routes/Error'
 
@@ -11,9 +12,10 @@ const router = createBrowserRouter([
   {path: '/', element: <App/ >, errorElement: <Error/ >,
 
     children: [
-      {path: '/', element: <Singin/ >},
+      {path: '/', element: <Home/ >},
+      {path: '/Singin', element: <Singin/ >},
       {path: '/Singup', element: <Singup/ >},
-      {path:'/Home', element: <Home/ >},
+      {path: '/LoginPage', element: <LoginPage/ >},
     ]
   }
 ])
